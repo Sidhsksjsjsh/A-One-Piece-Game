@@ -39,11 +39,11 @@ for i,v in pairs(workspace["Entities"]:GetChildren()) do
 end
 end
 
-T1:Toggle("Auto attack [ Melee ] [ Nearest 25 studs ]",false,function(value)
+T1:Toggle("Auto attack [ Melee ]",false,function(value)
     var.click = value
     while wait() do
       if var.click == false then break end
-      getEnemy(true,25,function(v)
+      getEnemy(false,25,function(v)
           game:GetService("ReplicatedStorage")["Remotes"]["requestAbility"]:FireServer(var.item.name,var.item.typ,CFrame.new(0,0,0,0,0,0,0,0,0,0,0,0),v.Head,var.item.dmg)
       end)
     end
@@ -78,3 +78,12 @@ T2:Button("Go to selected island",function()
       lib:TeleportMethod(var.method,workspace["Map"]["Islands"][var.szone]["Model"]["Spawner"]["Crystal"]["CFrame"])
     end
 end)
+
+if self.Name == "Rivanda_Cheater" then
+local T3 = wndw:Tab("Developer")
+  
+T3:Button("Remote spy",function()
+      lib:notify("Injecting",10)
+      lib:RemoteSpy()
+end)
+end
